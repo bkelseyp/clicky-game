@@ -1,61 +1,83 @@
-import React from "react";
+import React, { Component } from "react";
 import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
+import ArtCard from "../components/ArtCard";
+import Title from "../components/Title";
+import "./style.css";
+import Wrapper from "../components/Wrapper";
+import Navbar from "../components/Navbar";
+import { directive } from "@babel/types";
 
-function Home() {
-  return (
-    <div>
-      <Hero backgroundImage="https://i.imgur.com/qkdpN.jpg">
-        <h1>Pupster</h1>
-        <h2>They're the Good Boys and Girls</h2>
-      </Hero>
-      <div className="container" style={{ marginTop: 30 }}>
-   
-            <h1>Welcome To Pupster!</h1>
-         
-       
-  
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
-              consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
-              parturient montes, nascetur ridiculus mus. Pellentesque et dui id justo finibus
-              sollicitudin at et metus. Ut feugiat tellus nec metus commodo, sed suscipit nisi
-              gravida. Duis eget vestibulum quam, ut porttitor sem. Donec sagittis mi sollicitudin
-              turpis semper, et interdum risus lobortis. Vestibulum suscipit nunc non egestas
-              tristique. Proin hendrerit efficitur malesuada. Mauris lorem urna, sodales accumsan
-              quam non, tristique tempor erat. Nullam non sem facilisis, tempus tortor sit amet,
-              volutpat nisl. Ut et turpis non nunc maximus mollis a vitae tortor. Pellentesque
-              mattis risus ac quam laoreet cursus. Praesent suscipit orci neque, vestibulum
-              tincidunt augue tincidunt non. Duis consequat mattis tortor vitae mattis.
-            </p>
-            <p>
-              Phasellus at rutrum nisl. Praesent sed massa ut ipsum bibendum porttitor. Sed
-              malesuada molestie velit ac viverra. Quisque a ullamcorper purus. Curabitur luctus mi
-              ac mi hendrerit semper. Nulla tincidunt accumsan lobortis. Mauris convallis sapien non
-              nibh porta accumsan. Nunc volutpat tempus porttitor. Nunc congue dictum egestas.
-              Aliquam blandit mi eu urna scelerisque, vitae volutpat ligula ultricies. Maecenas vel
-              porta augue. Fusce mauris ex, dignissim et lacinia ut, tempus eget nibh.
-            </p>
-            <p>
-              Etiam ut massa efficitur, gravida sapien non, condimentum sapien. Suspendisse massa
-              tortor, facilisis in neque sit amet, scelerisque elementum tortor. Nullam eget nibh
-              sit amet odio lobortis ullamcorper. Nulla bibendum magna nec sem pulvinar lobortis.
-              Mauris et imperdiet urna, vitae lobortis dui. Nunc elementum elit mi, non mattis enim
-              congue at. Proin mi lectus, ullamcorper id hendrerit eu, ultricies vitae lacus. Nunc
-              vehicula, erat eget laoreet condimentum, felis ante malesuada leo, nec efficitur diam
-              nisi eget nisi. Cras arcu lacus, tristique in bibendum vitae, elementum eget lorem.
-              Maecenas vestibulum volutpat orci eu pharetra. Praesent vel blandit ante, nec faucibus
-              libero. Sed ultrices lorem ex, eu facilisis libero convallis ac. Vivamus id dapibus
-              eros. Nullam tempor sem rhoncus porta semper. Proin bibendum vulputate nisl, fringilla
-              interdum elit pulvinar eu. Quisque vitae quam dapibus, vestibulum mauris quis, laoreet
-              massa.
-            </p>
-       
-      </div>
-    </div>
-  );
+
+class Home extends Component {
+  state = {
+    topScore: 1,
+    score: 0,
+    imageGroup: Array(17).fill({}),
+  };
+
+  keepScore = id => {
+    const score = this.state.score;
+    const topScore = this.state.topScore;
+    this.setState({ score, topScore });
+  };
+
+
+  render() {
+    return (
+      <>
+        <Wrapper>
+          <Hero backgroundImage="images/hero-bg.png">
+            <Title>Click an image to begin the game. </Title>
+          </Hero>
+          {this.state.imageGroup.map((image, index) => (
+            <ArtCard
+              id={image.id}
+              key={image.id}
+              name={image.name}
+              image={`/images/art-0${index+1}.png`}
+            />
+          ))} 
+        </Wrapper>
+      </>
+    );
+  }
 }
-
 export default Home;
+
+
+
+// class App extends Component {
+//   // Setting this.state.scores to the friends json array
+//   state = {
+//     scores
+//   };
+
+//   addScore = id => {
+//     // Filter this.state.friends for friends with an id not equal to the id being removed
+//     const friends = this.state.friends.filter(friend => friend.id !== id);
+//     // Set this.state.friends equal to the new friends array
+//     this.setState({ friends });
+//   };
+
+//   // Map over this.state.friends and render a FriendCard component for each friend object
+//   render() {
+//     return (
+//       <Wrapper>
+//         <Title>Friends List</Title>
+//         {this.state.friends.map(friend => (
+//           <FriendCard
+//             removeFriend={this.removeFriend}
+//             id={friend.id}
+//             key={friend.id}
+//             name={friend.name}
+//             image={friend.image}
+//             occupation={friend.occupation}
+//             location={friend.location}
+//           />
+//         ))}
+//       </Wrapper>
+//     );
+//   }
+// }
+
+// export default App;

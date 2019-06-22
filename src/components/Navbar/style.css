@@ -1,0 +1,10 @@
+.brandFont {
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 25px;
+}

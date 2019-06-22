@@ -1,56 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { tsPropertySignature } from "@babel/types";
+//import Home from "../../pages/Home";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
+   
+    <nav className="navbar sticky-top navbar-light bg-primary">
+      <Link className="navbar-brand mb-0 h1 text-white brandFont" to="/">
         Clicky Game
       </Link>
-      <div>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/home"
-                  ? "nav-link active "
-                  : "nav-link "
-              }
-            >
-              Home
-            </Link>
-          </li>
-          <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/home"
-                  ? "nav-link active "
-                  : "nav-link "
-              }
-            >
-              Click an image to begin!
-            </Link>
-         
-          <li className="nav-item">
-          <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/home"
-                  ? "nav-link active "
-                  : "nav-link "
-              }
-            >
-               Score: {0} | Top Score: {0}
-           
-            </Link>
-            
-         
-          </li>
-        </ul>
-      </div>
+    
     </nav>
   );
 }
