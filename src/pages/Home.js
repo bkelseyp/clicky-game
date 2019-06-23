@@ -50,7 +50,7 @@ class Home extends Component {
   };
 
   pointIncrease = () => {
-    let score = this.state.currentScore + 4;
+    let score = this.state.currentScore + 2;
     console.log(`the score is ${score}`);
     if (score === this.state.imageGroup.length) {
       this.setState({
