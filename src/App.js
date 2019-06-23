@@ -10,17 +10,16 @@ function App() {
   return (
     <Router>
       <>
-        <Navbar />
         <Wrapper>
           <Route exact path="/" component={ Home } />
         </Wrapper>
-        <Footer />
       </>
     </Router>
   );
 }
 
 export default App;
+
 
 
 // import React from "react";
