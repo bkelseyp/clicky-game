@@ -15,9 +15,9 @@ import "./style.css";
 // export default ArtCard;
 
 const ArtCard = props => (
-  <div className="card" onClick={() => props.imageClick(props.id)}>
+  <div className="card">
     <div className="img-container">
-      <img alt={props.name || ''} src={props.image || ''}  />
+      <img alt={props.name || ''} src={props.image || ''}   onClick={props.imgClick}/>
     </div>
   </div>
 );
