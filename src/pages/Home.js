@@ -5,6 +5,20 @@ import Wrapper from "../components/Wrapper";
 import Navbar from "../components/Navbar";
 import { directive } from "@babel/types";
 import Footer from "../components/Footer";
+import artwork from "../artwork.json";
+
+const shuffleArray = (array) => {
+  let counter = array.length;
+
+  while (counter > 0) {
+      let index = Math.floor(Math.random() * counter);
+      counter--;
+      let temp = array[counter];
+      array[counter] = array[index];
+      array[index] = temp;
+  }
+  return array;
+};
 
 
 class Home extends Component {
@@ -14,7 +28,7 @@ class Home extends Component {
     result: "",
     clicked: [],
     imageGroup: Array(17).fill({}),
-
+    artwork,
     gameOver: false
   };
 
@@ -36,7 +50,7 @@ class Home extends Component {
   };
 
   pointIncrease = () => {
-    let score = this.state.currentScore + 1;
+    let score = this.state.currentScore + 4;
     console.log(`the score is ${score}`);
     if (score === this.state.imageGroup.length) {
       this.setState({
@@ -44,7 +58,7 @@ class Home extends Component {
         topScore: score,
         currentScore: 0,
         clicked: [],
-
+        artwork,
         gameOver: false
       });
     } else if (score > this.state.topScore) {
@@ -69,17 +83,17 @@ class Home extends Component {
       topScore: this.state.topScore,
       result: "You Lose!",
       clicked: [],
-
+      artwork,
       gameOver: true
     });
     console.log('Game Over? ', this.state.gameOver);
     this.resetArtArray();
   }
 
-  // resetVegArray = () => {
-  //   let newScramble = shuffleArray(vegetables);
-  //   this.setState({ vegetables: newScramble })
-  // }
+  resetArtArray = () => {
+    let newLayout = shuffleArray(artwork);
+    this.setState({ artwork: newLayout })
+  }
 
   // keepScore = id => {
   //   const score = this.state.score;
@@ -103,7 +117,7 @@ class Home extends Component {
           {this.state.imageGroup.map((image, index) => (
             <ArtCard
               id={image.id}
-              key={image.id}
+              //key={image.id}
               name={image.name}
               imgClick={this.imageClick}
               image={`/images/art-0${index + 1}.png`}
