@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Wrapper from "./components/Wrapper";
 // import Navbar from "./components/Navbar";
@@ -8,13 +7,9 @@ import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
-    <Router>
-      <>
-        <Wrapper>
-          <Route exact path="/" component={ Home } />
-        </Wrapper>
-      </>
-    </Router>
+    <Wrapper>
+      <Home />
+    </Wrapper>
   );
 }
 
