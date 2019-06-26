@@ -3,7 +3,7 @@ import ArtCard from "../components/ArtCard";
 import "./style.css";
 import Wrapper from "../components/Wrapper";
 import Navbar from "../components/Navbar";
-import { directive } from "@babel/types";
+// import { directive } from "@babel/types";
 import Footer from "../components/Footer";
 import artwork from "../artwork.json";
 
