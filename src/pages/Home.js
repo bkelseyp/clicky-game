@@ -37,7 +37,7 @@ class Home extends Component {
   }
 
   imageClick = (id) => {
-    console.log(`Picture clicked with id: ${id}`);
+    console.log(`Picture clicked with id is: ${id}`);
     if (!this.state.clicked.includes(id)) {
       this.pointIncrease();
       this.state.clicked.push(id);
